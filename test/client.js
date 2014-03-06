@@ -66,7 +66,7 @@ describe('Iak Client', function() {
     it('lists all buckets on a host', function(done) {
       client.buckets.list(function(err, buckets) {
         expect(err).not.to.exist;
-        expect(buckets).to.eql(['test']);
+        expect(buckets).to.contain('test');
         done();
       });
     });
