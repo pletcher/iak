@@ -48,7 +48,7 @@ describe('Iak Buckets', function() {
       client.bucket('test').resetProps(function(err, status) {
         expect(err).to.not.exist;
         expect(status).to.equal(204);
-        
+
         client.bucket('test').getProps(function(err, props) {
           expect(props.n_val).to.equal(3);
           done();
@@ -60,6 +60,15 @@ describe('Iak Buckets', function() {
       client.bucket('test').store('doc', { bar: 'baz' }, function(err, status) {
         expect(err).to.not.exist;
         expect(status).to.equal(204);
+        done();
+      });
+    });
+
+    it('heads an object', function(done) {
+      client.bucket('test').head('doc', function(err, response) {
+        expect(err).to.not.exist;
+        expect(response.status).to.equal(200);
+        expect(response.headers).to.exist;
         done();
       });
     });
@@ -88,4 +97,3 @@ describe('Iak Buckets', function() {
     });
   });
 });
-
