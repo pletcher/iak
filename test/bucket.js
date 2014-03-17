@@ -2,7 +2,7 @@ var riak = require('../lib/client.js');
 var chai = require('chai');
 var expect = chai.expect;
 
-describe('Iak Buckets', function() {
+describe('Iak', function() {
   describe('bucket', function() {
     var client;
 
@@ -18,7 +18,8 @@ describe('Iak Buckets', function() {
       it("lists a bucket's keys", function(done) {
         client.bucket('test').keys(function(err, keys) {
           expect(err).to.not.exist;
-          expect(keys).to.eql(['count', 'doc']);
+          expect(keys).to.contain('count');
+          expect(keys).to.contain('doc');
           done();
         });
       });
