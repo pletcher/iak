@@ -68,7 +68,7 @@ describe('Iak', function() {
     it('heads an object', function(done) {
       client.bucket('test').head('doc', function(err, response) {
         expect(err).to.not.exist;
-        expect(response.status).to.equal(200);
+        expect(response.statusCode).to.equal(200);
         expect(response.headers).to.exist;
         done();
       });
@@ -77,7 +77,7 @@ describe('Iak', function() {
     it('fetches an object', function(done) {
       client.bucket('test').fetch('doc', function(err, doc) {
         expect(err).to.not.exist;
-        expect(doc).to.eql({ bar: 'baz' });
+        expect(doc).to.eql({ bar: 'baz', statusCode: 200 });
         done();
       });
     });
